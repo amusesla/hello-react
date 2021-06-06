@@ -1,18 +1,28 @@
 import React, { Component } from 'react'
 
-class MethodsAsProps extends Component {
-    constructor(){
-        super();
+import Child from './Children'
+
+class Parent extends Component {
+    constructor(props) {
+        super(props)
         this.state = {
-            parentName: 'parent'
-        };
-    };
+            parent: 'Amuse'
+        }
+        this.greetParent = this.greetParent.bind(this)
+    }
 
-    render(){
+    greetParent(child){
+        console.log(child)
+        alert(`greet! ${this.state.parent} from ${child}`)
+    }
+
+    render() {
         return (
-            <div></div>
-        );
-    };
-};
+            <div>
+                <Child greetHandler={this.greetParent}/>
+            </div>
+        )
+    }
+}
 
-export default MethodsAsProps
+export default Parent
